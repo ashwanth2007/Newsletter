@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashwanth S | System Architecture Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'neon-green': '#00ff41',
+                        'neon-green-dim': '#008F11',
+                        'void-black': '#050505',
+                        'charcoal': '#121212',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+        body {
+            background-color: #050505;
+            color: #e5e5e5;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(0, 255, 65, 0.05) 0%, transparent 50%),
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 40px 40px, 40px 40px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .neon-glow {
+            text-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+        }
+        
+        .border-glow:focus-within {
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+            border-color: #00ff41;
+        }
+    </style>
+</head>
+<body class="font-sans selection:bg-neon-green selection:text-black">
+
+    <!-- Navbar -->
+    <nav class="w-full border-b border-white/10 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-2 h-2 bg-neon-green rounded-full animate-pulse"></div>
+                <span class="font-mono font-bold text-lg tracking-tight text-white">ASHWANTH S</span>
+            </div>
+            <div class="text-xs font-mono text-neon-green border border-neon-green/30 px-3 py-1 rounded hover:bg-neon-green hover:text-black transition-all cursor-default">
+                STATUS: ONLINE
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow flex flex-col items-center justify-center w-full px-4 sm:px-6 relative">
+
+        <!-- HERO SECTION -->
+        <section class="max-w-3xl w-full text-center py-12 sm:py-20 space-y-8">
+            
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs font-mono text-neon-green mb-2">
+                <i class="fa-solid fa-terminal text-[10px]"></i>
+                <span>SYSTEM_ARCHITECTURE_V1.0</span>
+            </div>
+
+            <!-- Headline -->
+            <h1 class="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white leading-[1.1]">
+                STOP COLLECTING <span class="text-white/40 line-through decoration-neon-green decoration-2">PROMPTS</span>.<br>
+                BUILD <span class="text-neon-green neon-glow">INFRASTRUCTURE</span>.
+            </h1>
+
+            <!-- Subhead -->
+            <p class="text-lg sm:text-xl text-neutral-400 max-w-2xl mx-auto leading-relaxed">
+                Most operators are drowning in tools. I help you engineer 
+                <span class="text-white font-medium">revenue-generating AI systems</span>. 
+                Join the operators moving from manual tasks to automated leverage.
+            </p>
+
+            <!-- Social Proof Bar -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 text-xs text-neutral-500 font-mono mt-6">
+                <span class="uppercase tracking-widest">Trusted By Operators At:</span>
+                <div class="flex items-center gap-6 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+                    <span class="font-bold tracking-widest text-white text-sm"><a href="https://www.linkedin.com/in/aryanmahajaninstig8/" target="_blank">INSTIG8.AI</a></span>
+                    <span class="h-3 w-px bg-white/20"></span>
+                    <span class="font-bold tracking-widest text-white text-sm"><a href="https://zorocorp.com/" target="_blank">ZORO CORP</a></span>
+                    <span class="h-3 w-px bg-white/20"></span>
+                    <span class="font-bold tracking-widest text-white text-sm"><a href="https://www.instagram.com/meetavinash" target="_blank">FREEDOM WITH AI </a></span>
+                </div>
+            </div>
+
+            <!-- Primary Form (Re-engineered for safety) -->
+            <div id="subscribe" class="max-w-lg mx-auto mt-12 w-full">
+                <form onsubmit="handleSubscribe(event)" class="relative group">
+                    <!-- Glow Effect -->
+                    <div class="absolute -inset-1 bg-gradient-to-r from-neon-green to-emerald-600 rounded-lg blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
+                    
+                    <!-- Input Container -->
+                    <div class="relative flex flex-col sm:flex-row gap-2 bg-charcoal p-2 rounded-lg border border-white/10 border-glow transition-all">
+                        <input 
+                            type="email" 
+                            id="heroEmail" 
+                            required
+                            placeholder="Enter your email..." 
+                            class="w-full flex-grow bg-transparent text-white px-4 py-3 focus:outline-none font-mono text-sm placeholder-neutral-600 min-w-0"
+                        >
+                        <button type="submit" class="w-full sm:w-auto bg-neon-green text-black font-bold font-mono px-6 py-3 rounded hover:bg-white transition-colors flex items-center justify-center gap-2 whitespace-nowrap">
+                            INITIALIZE_ACCESS <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                    
+                    <p class="text-[10px] uppercase tracking-widest text-neutral-600 mt-3 font-mono">
+                        <i class="fa-solid fa-lock mr-1"></i> No fluff. Unsubscribe instantly.
+                    </p>
+                </form>
+                 
+                <!-- Success Message (Hidden) -->
+                 <div id="heroSuccess" class="hidden mt-4 p-4 bg-neon-green/10 border border-neon-green rounded text-neon-green font-mono text-sm">
+                    >> ACCESS GRANTED. CHECK INBOX FOR BRIEFING.
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full border-t border-white/10 py-8 bg-black mt-auto">
+        <div class="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono text-neutral-600">
+            <p>&copy; 2025 Ashwanth S. All Systems Operational.</p>
+            <div class="flex items-center gap-6">
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/ashwanthofficial/" target="_blank" class="flex items-center gap-2 hover:text-neon-green transition-colors group">
+                    <i class="fa-brands fa-linkedin text-lg"></i>
+                    <span class="group-hover:underline underline-offset-4">LINKEDIN</span>
+                </a>
+                
+                <!-- Portfolio -->
+                <a href="https://linktr.ee/ashwanthofficial" target="_blank" class="hover:text-neon-green transition-colors hover:underline underline-offset-4">PORTFOLIO</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function handleSubscribe(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerHTML;
+            
+            // Loading State
+            btn.innerHTML = 'PROCESSING...';
+            btn.classList.add('opacity-75', 'cursor-not-allowed');
+            
+            // Simulating API Call
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.classList.remove('opacity-75', 'cursor-not-allowed');
+                
+                // Show success (for the hero form)
+                if(e.target.id !== 'heroSuccess') {
+                    const successMsg = document.getElementById('heroSuccess');
+                    if(successMsg) {
+                        e.target.style.display = 'none';
+                        successMsg.classList.remove('hidden');
+                    } else {
+                        alert("System Access Granted.");
+                    }
+                }
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
