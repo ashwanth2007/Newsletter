@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashwanth S | System Architecture</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        'brand-black': '#050505',
+                        'brand-green': '#10B981', 
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Utilities */
+        .delay-100 { animation-delay: 0.15s; }
+        .delay-200 { animation-delay: 0.3s; }
+        .delay-300 { animation-delay: 0.45s; }
+        
+        .perspective-1000 { perspective: 1000px; }
+        
+        html { scroll-behavior: smooth; }
+        
+        ::selection {
+            background-color: #000;
+            color: #fff;
+        }
+
+        /* Phantom Grid Background */
+        .bg-grid-pattern {
+            background-size: 60px 60px;
+            background-image: 
+                linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+            mask-image: linear-gradient(to bottom, black 0%, transparent 70%);
+            -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 70%);
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-white text-slate-900 font-sans flex flex-col relative overflow-x-hidden selection:bg-black selection:text-white">
+
+    <!-- Phantom Grid (Fades away) -->
+    <div class="fixed inset-0 pointer-events-none z-0 bg-grid-pattern h-[80vh]"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent py-6">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex flex-col group cursor-default">
+                <h1 class="font-serif text-2xl tracking-[0.1em] font-black text-slate-900 uppercase">
+                    Ashwanth S
+                </h1>
+                <!-- Brand Accent Line -->
+                <div class="flex h-[3px] w-full mt-1 transition-all duration-500 group-hover:w-[110%]">
+                    <div class="w-3/4 bg-black"></div>
+                    <div class="w-1/4 bg-red-600"></div>
+                </div>
+            </div>
+            
+            <!-- Status Button (Black Theme) -->
+            <div class="hidden md:flex items-center">
+                <div class="group relative cursor-pointer overflow-hidden rounded bg-black px-4 py-2 transition-all duration-300 hover:shadow-xl hover:scale-105">
+                    <div class="flex items-center gap-2.5 relative z-10">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-green opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-green"></span>
+                        </span>
+                        <span class="text-[10px] font-bold tracking-[0.15em] text-white uppercase">
+                            Status: Online
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content (Scaled Down & Tighter) -->
+    <main class="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 flex-grow flex flex-col justify-center text-center mt-32 md:mt-24">
+        
+        <!-- Badge (Black Theme) -->
+        <div class="flex justify-center mb-6 animate-fade-in-up opacity-0">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-black text-white text-[10px] font-mono font-bold uppercase tracking-[0.15em] cursor-default shadow-lg transform transition-transform hover:scale-105">
+                <span>&gt;_ SYSTEM_ARCHITECTURE_V1.0</span>
+            </div>
+        </div>
+
+        <!-- Main Headline (Smaller, Tighter, "Prompts." on same line) -->
+        <h2 class="text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 leading-[1] mb-6 tracking-tighter uppercase animate-fade-in-up delay-100 opacity-0 drop-shadow-sm">
+            Stop Collecting <span class="relative inline-block text-slate-300 decoration-red-600 decoration-[3px] line-through">Prompts.</span>
+            <br />
+            <span class="relative inline-block mt-2">
+                Build Infrastructure.
+            </span>
+        </h2>
+
+        <!-- Subhead (Smaller, Tighter) -->
+        <p class="text-sm sm:text-base font-medium text-slate-600 max-w-2xl mx-auto leading-relaxed mb-10 animate-fade-in-up delay-200 opacity-0 px-4">
+            Most operators are drowning in tools. I help you engineer <span class="text-slate-900 font-black bg-slate-100 px-2 py-0.5 rounded-sm">REVENUE-GENERATING AI SYSTEMS</span>. Join the operators moving from manual tasks to automated leverage.
+        </p>
+
+        <!-- TRUSTED BY SECTION (Tighter spacing) -->
+        <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 text-[10px] sm:text-xs font-mono text-slate-500 mb-12 animate-fade-in-up delay-200 opacity-0">
+            <span class="uppercase tracking-widest font-bold text-slate-400">Trusted By Operators At:</span>
+            <div class="flex flex-wrap justify-center items-center gap-6 md:gap-8 opacity-90">
+                <a href="https://www.linkedin.com/in/aryanmahajaninstig8/" target="_blank" class="font-bold tracking-widest text-slate-900 hover:text-red-600 transition-colors uppercase transform hover:scale-105 inline-block">INSTIG8.AI</a>
+                <span class="hidden md:inline text-slate-300">|</span>
+                <a href="https://zorocorp.com/" target="_blank" class="font-bold tracking-widest text-slate-900 hover:text-red-600 transition-colors uppercase transform hover:scale-105 inline-block">ZORO CORP</a>
+                <span class="hidden md:inline text-slate-300">|</span>
+                <a href="https://www.instagram.com/meetavinash" target="_blank" class="font-bold tracking-widest text-slate-900 hover:text-red-600 transition-colors uppercase transform hover:scale-105 inline-block">FREEDOM WITH AI</a>
+            </div>
+        </div>
+
+        <!-- Form Area (Compact Width) -->
+        <div class="w-full max-w-xl mx-auto mb-20 relative min-h-[140px] animate-fade-in-up delay-300 opacity-0">
+            
+            <!-- Success Message -->
+            <div id="success-view" class="hidden p-6 bg-emerald-50 border-2 border-emerald-500 text-emerald-900 font-mono text-sm shadow-lg rounded-sm transform scale-105 transition-all">
+                <div class="flex items-center justify-center gap-2 mb-2">
+                    <i data-lucide="check" class="w-5 h-5 stroke-[3]"></i>
+                    <span class="font-black text-lg tracking-widest">ACCESS GRANTED</span>
+                </div>
+                <p class="text-[10px] font-bold tracking-widest opacity-80">>> CHECK INBOX FOR BRIEFING.</p>
+            </div>
+
+            <!-- Error Message -->
+            <div id="error-view" class="hidden mb-4 p-3 bg-red-50 border border-red-500 text-red-600 text-[10px] font-mono font-bold text-center tracking-wide shadow-sm">
+                >> CONNECTION ERROR. PLEASE TRY AGAIN.
+            </div>
+
+            <!-- STEP 1: Email Form -->
+            <form id="step1-form" class="relative group perspective-1000 block">
+                <!-- Hover Glow -->
+                <div class="absolute -inset-4 bg-slate-200/60 blur-2xl rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-95 group-hover:scale-100"></div>
+                
+                <div class="relative flex flex-col sm:flex-row gap-0 bg-white border-[3px] border-black p-1.5 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-transform duration-300 group-hover:-translate-y-1 group-hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)]">
+                    <div class="relative flex-grow">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <i data-lucide="mail" class="h-5 w-5 text-slate-400"></i>
+                        </div>
+                        <input
+                            type="email"
+                            id="email-input"
+                            required
+                            placeholder="ENTER YOUR EMAIL..."
+                            class="block w-full pl-12 pr-4 py-4 text-slate-900 placeholder-slate-400 bg-transparent border-none focus:outline-none focus:ring-0 text-sm sm:text-base font-bold tracking-wide uppercase"
+                        />
+                    </div>
+                    <!-- Initialize Button -->
+                    <button
+                        type="submit"
+                        class="flex items-center justify-center px-8 py-4 text-xs sm:text-sm font-black tracking-[0.15em] text-white uppercase bg-black hover:bg-slate-800 transition-colors whitespace-nowrap"
+                    >
+                        INITIALIZE <i data-lucide="arrow-right" class="w-4 h-4 ml-2 stroke-[3]"></i>
+                    </button>
+                </div>
+
+                <!-- No Fluff Text -->
+                <div class="mt-6 flex justify-center">
+                    <p class="flex items-center gap-2 text-[10px] font-black tracking-[0.25em] text-slate-400 uppercase bg-white/80 px-4 py-1 rounded-full backdrop-blur-sm">
+                        <i data-lucide="lock" class="w-3 h-3"></i> No fluff. Unsubscribe instantly.
+                    </p>
+                </div>
+            </form>
+
+            <!-- STEP 2: Name Form -->
+            <div id="step2-form" class="hidden relative bg-white border-[3px] border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] text-left">
+                <label class="block text-slate-900 text-[10px] font-black tracking-[0.2em] uppercase mb-4">
+                    &gt;&gt; Email Logged. Identify Yourself (Optional):
+                </label>
+                <div class="flex flex-col gap-4">
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <i data-lucide="user" class="h-5 w-5 text-slate-400"></i>
+                        </div>
+                        <input
+                            type="text"
+                            id="name-input"
+                            placeholder="TYPE YOUR NAME..."
+                            class="block w-full pl-12 pr-4 py-4 text-slate-900 placeholder-slate-400 bg-slate-50 border border-slate-200 focus:border-black focus:outline-none focus:ring-0 transition-all text-sm font-bold uppercase tracking-wide"
+                        />
+                    </div>
+                    <div class="flex gap-4 mt-2">
+                        <button 
+                            id="confirm-btn"
+                            class="flex-1 bg-black text-white font-black text-xs tracking-[0.2em] uppercase py-4 border border-black hover:bg-white hover:text-black transition-colors disabled:opacity-70"
+                        >
+                            Confirm & Enter
+                        </button>
+                        <button 
+                            id="skip-btn"
+                            class="px-6 py-4 text-slate-400 hover:text-black font-bold text-[10px] uppercase tracking-[0.2em] transition-colors border border-transparent hover:border-slate-200"
+                        >
+                            Skip &gt;&gt;
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-100 mt-auto relative z-10">
+        <div class="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-[10px] font-bold tracking-[0.1em] text-slate-400 uppercase">
+                © 2025 Ashwanth S. All Systems Operational.
+            </p>
+            
+            <div class="flex items-center gap-8 text-[10px] font-black tracking-[0.2em] text-slate-400 uppercase">
+                <a 
+                    href="https://www.linkedin.com/in/ashwanthofficial/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="flex items-center gap-2 hover:text-black transition-colors group"
+                >
+                    <i data-lucide="linkedin" class="w-3 h-3"></i>
+                    <span class="group-hover:text-black decoration-2 underline-offset-4 group-hover:underline">LinkedIn</span>
+                </a>
+                
+                <a 
+                    href="https://ashwanth-dev.netlify.app/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="flex items-center gap-2 hover:text-black transition-colors group"
+                >
+                    <i data-lucide="external-link" class="w-3 h-3"></i>
+                    <span class="group-hover:text-black decoration-2 underline-offset-4 group-hover:underline">Portfolio</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Logic Script -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Variables
+        let email = '';
+        let name = '';
+        
+        // DOM Elements
+        const navbar = document.getElementById('navbar');
+        const step1Form = document.getElementById('step1-form');
+        const step2Form = document.getElementById('step2-form');
+        const emailInput = document.getElementById('email-input');
+        const nameInput = document.getElementById('name-input');
+        const confirmBtn = document.getElementById('confirm-btn');
+        const skipBtn = document.getElementById('skip-btn');
+        const successView = document.getElementById('success-view');
+        const errorView = document.getElementById('error-view');
+
+        // Sticky Navbar Logic
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('bg-white/95', 'backdrop-blur-sm', 'shadow-sm', 'py-4');
+                navbar.classList.remove('py-6', 'bg-transparent');
+            } else {
+                navbar.classList.remove('bg-white/95', 'backdrop-blur-sm', 'shadow-sm', 'py-4');
+                navbar.classList.add('py-6', 'bg-transparent');
+            }
+        });
+
+        // Step 1 Submission
+        step1Form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (emailInput.value && emailInput.value.includes('@')) {
+                email = emailInput.value;
+                step1Form.classList.add('hidden');
+                step1Form.classList.remove('block');
+                step2Form.classList.remove('hidden');
+                step2Form.classList.add('block');
+                nameInput.focus();
+            }
+        });
+
+        // Helper to get UTM
+        const getUTM = (param) => {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param) || null;
+        };
+
+        // Final Submission Logic
+        const handleFinalSubmit = async (skippedName = false) => {
+            // Set Loading State
+            const btnText = skippedName ? skipBtn : confirmBtn;
+            const originalText = btnText.innerText;
+            btnText.innerText = '...';
+            confirmBtn.disabled = true;
+            skipBtn.disabled = true;
+            errorView.classList.add('hidden');
+
+            const finalName = skippedName ? null : (nameInput.value.trim() === '' ? null : nameInput.value.trim());
+
+            try {
+                // 1. Get IP
+                const ipResponse = await fetch('https://api64.ipify.org?format=json');
+                const ipData = await ipResponse.json();
+                const userIp = ipData.ip;
+
+                // 2. Payload
+                const payload = {
+                    email: email,
+                    name: finalName,
+                    ip: userIp,
+                    utm_source: getUTM('utm_source'),
+                    utm_medium: getUTM('utm_medium'),
+                    utm_campaign: getUTM('utm_campaign'),
+                    timestamp: new Date().toISOString()
+                };
+
+                // 3. Webhook
+                const webhookUrl = "https://n8n.srv1021168.hstgr.cloud/webhook/d685699f-b890-4f73-91ea-8ba17e63828c";
+                
+                const response = await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (response.ok) {
+                    step2Form.classList.add('hidden');
+                    successView.classList.remove('hidden');
+                } else {
+                    throw new Error("Webhook failed");
+                }
+
+            } catch (error) {
+                console.error(error);
+                errorView.classList.remove('hidden');
+                
+                // Reset buttons
+                btnText.innerText = originalText;
+                confirmBtn.disabled = false;
+                skipBtn.disabled = false;
+
+                // Hide error after 3s
+                setTimeout(() => {
+                    errorView.classList.add('hidden');
+                }, 3000);
+            }
+        };
+
+        // Step 2 Listeners
+        confirmBtn.addEventListener('click', () => handleFinalSubmit(false));
+        skipBtn.addEventListener('click', () => handleFinalSubmit(true));
+
+    </script>
+</body>
+</html>
