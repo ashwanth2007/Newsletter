@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashwanth S | Terminate Connection</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        'brand-black': '#050505',
+                        'brand-red': '#DC2626', 
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'shake': 'shake 0.5s cubic-bezier(.36,.07,.19,.97) both',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        shake: {
+                            '10%, 90%': { transform: 'translate3d(-1px, 0, 0)' },
+                            '20%, 80%': { transform: 'translate3d(2px, 0, 0)' },
+                            '30%, 50%, 70%': { transform: 'translate3d(-4px, 0, 0)' },
+                            '40%, 60%': { transform: 'translate3d(4px, 0, 0)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Utilities */
+        html { scroll-behavior: smooth; }
+        
+        ::selection {
+            background-color: #DC2626;
+            color: #fff;
+        }
+
+        /* Phantom Grid Background */
+        .bg-grid-pattern {
+            background-size: 60px 60px;
+            background-image: 
+                linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+            mask-image: linear-gradient(to bottom, black 0%, transparent 90%);
+            -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 90%);
+        }
+
+        /* Glitch Effect on Hover for specific text */
+        .glitch-hover:hover {
+            animation: shake 0.5s;
+            color: #DC2626;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-white text-slate-900 font-sans flex flex-col relative overflow-x-hidden">
+
+    <!-- Phantom Grid -->
+    <div class="fixed inset-0 pointer-events-none z-0 bg-grid-pattern h-screen"></div>
+
+    <!-- Navigation (Simplified for Unsubscribe Context) -->
+    <nav class="fixed top-0 left-0 right-0 z-50 py-6 bg-white/90 backdrop-blur-sm border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex flex-col group cursor-default">
+                <h1 class="font-serif text-2xl tracking-[0.1em] font-black text-slate-900 uppercase">
+                    Ashwanth S
+                </h1>
+                <div class="flex h-[3px] w-full mt-1">
+                    <div class="w-full bg-black"></div>
+                </div>
+            </div>
+            
+            <!-- Status: Warning -->
+            <div class="hidden md:flex items-center">
+                <div class="flex items-center gap-2.5 px-4 py-2 bg-slate-50 border border-slate-200 rounded">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
+                    </span>
+                    <span class="text-[10px] font-bold tracking-[0.15em] text-slate-500 uppercase">
+                        Protocol: Disconnect
+                    </span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="relative z-10 w-full max-w-3xl mx-auto px-4 flex-grow flex flex-col justify-center items-center text-center mt-32 mb-20">
+
+        <!-- Initial Warning Badge -->
+        <div class="mb-8 animate-fade-in">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-red-50 text-red-600 border border-red-100 text-[10px] font-mono font-bold uppercase tracking-[0.15em]">
+                <i data-lucide="alert-triangle" class="w-3 h-3"></i>
+                <span>Warning: Loss of Leverage Imminent</span>
+            </div>
+        </div>
+
+        <!-- Headline -->
+        <h2 class="text-4xl sm:text-5xl font-black text-slate-900 leading-tight mb-6 tracking-tighter uppercase animate-fade-in delay-100">
+            Sever Connection?
+        </h2>
+
+        <!-- The Persuasive Copy ("The Company") -->
+        <div class="max-w-xl mx-auto mb-10 text-slate-600 space-y-4 animate-fade-in delay-200">
+            <p class="font-serif text-lg italic text-slate-800">
+                "The manual operator works 60 hours. The architect works 4."
+            </p>
+            <p class="text-sm sm:text-base leading-relaxed">
+                You are about to disconnect from the infrastructure that builds automated wealth. 
+                Leaving means returning to manual inputs, unoptimized workflows, and linear growth.
+            </p>
+            <p class="text-xs font-bold tracking-widest text-slate-400 uppercase pt-2">
+                Are you sure you want to go back to "Hard Mode"?
+            </p>
+        </div>
+
+        <!-- The Interaction Zone -->
+        <div class="w-full max-w-md mx-auto relative perspective-1000 animate-fade-in delay-300">
+            
+            <!-- STAGE 1: Input Form -->
+            <div id="unsubscribe-stage-1" class="bg-white border-[3px] border-black p-2 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-300">
+                <div class="relative mb-2">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <i data-lucide="mail-minus" class="h-5 w-5 text-slate-400"></i>
+                    </div>
+                    <input 
+                        type="email" 
+                        id="email-input" 
+                        placeholder="CONFIRM EMAIL TO DISCONNECT..." 
+                        class="block w-full pl-12 pr-4 py-4 text-slate-900 placeholder-slate-400 bg-slate-50 border-none focus:ring-0 text-sm font-bold tracking-wide uppercase"
+                    >
+                </div>
+                <button 
+                    onclick="triggerHook()"
+                    class="w-full flex items-center justify-center px-8 py-4 text-xs font-black tracking-[0.2em] text-white uppercase bg-black hover:bg-slate-800 transition-colors group"
+                >
+                    <span class="group-hover:text-red-500 transition-colors">Terminate Connection</span>
+                </button>
+            </div>
+
+            <!-- STAGE 2: The Hook (Fixed Layout) -->
+            <div id="unsubscribe-stage-2" class="hidden relative z-20 bg-black text-white p-8 flex-col justify-center items-center text-center shadow-[10px_10px_0px_0px_rgba(220,38,38,1)] border border-slate-800">
+                <div class="mb-6">
+                    <div class="inline-flex p-3 bg-red-900/30 rounded-full mb-3 border border-red-900">
+                         <i data-lucide="shield-alert" class="w-8 h-8 text-red-500"></i>
+                    </div>
+                    <h3 class="text-xl font-black uppercase tracking-widest text-white leading-none">Wait.</h3>
+                </div>
+                <p class="text-sm font-mono text-slate-400 mb-8 leading-relaxed max-w-sm mx-auto">
+                    By leaving, you miss the <span class="text-white font-bold">V2.0 Systems Update</span> dropping next week. It's designed to automate 80% of client acquisition.
+                </p>
+                
+                <div class="flex flex-col gap-4 w-full">
+                    <button onclick="abortUnsubscribe()" class="w-full py-4 bg-white text-black text-xs font-black uppercase tracking-[0.2em] hover:bg-slate-200 transition-colors shadow-lg transform active:scale-95 transition-transform">
+                        Cancel (Keep My Access)
+                    </button>
+                    
+                    <button onclick="confirmUnsubscribe()" class="group w-full py-2 flex justify-center items-center gap-2 text-red-500 hover:text-red-400 transition-colors">
+                         <span class="text-[10px] font-bold uppercase tracking-[0.2em] underline decoration-1 underline-offset-4 group-hover:no-underline">Yes, Disconnect Me</span>
+                         <i data-lucide="arrow-right" class="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- STAGE 3: Success / Regret (Hidden initially) -->
+            <div id="unsubscribe-stage-3" class="hidden bg-slate-50 border border-slate-200 p-8 text-center shadow-inner">
+                <div class="flex justify-center mb-4">
+                    <div class="p-3 bg-white rounded-full border border-slate-100 shadow-sm">
+                        <i data-lucide="unlink" class="w-6 h-6 text-slate-400"></i>
+                    </div>
+                </div>
+                <h3 class="text-xl font-black text-slate-900 uppercase tracking-tight mb-2">Disconnected</h3>
+                <p class="text-xs text-slate-500 font-mono mb-6">
+                    You have been removed from the database. No further leverage will be sent to <span id="removed-email" class="font-bold text-slate-900"></span>.
+                </p>
+                
+                <div class="relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+                    <button 
+                        onclick="resubscribe()"
+                        class="relative w-full flex items-center justify-center gap-2 px-6 py-4 bg-white border-2 border-slate-900 text-slate-900 text-[10px] font-black uppercase tracking-[0.15em] hover:bg-slate-900 hover:text-white transition-all transform hover:-translate-y-1"
+                    >
+                        <i data-lucide="refresh-cw" class="w-3 h-3"></i>
+                        <span>Undo & Re-Initialize</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- STAGE 4: Resubscribe Success -->
+            <div id="unsubscribe-stage-4" class="hidden p-6 bg-emerald-50 border-2 border-emerald-500 text-emerald-900 text-center">
+                <div class="flex items-center justify-center gap-2 mb-2">
+                    <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+                    <span class="font-black text-sm tracking-widest uppercase">System Restored</span>
+                </div>
+                <p class="text-[10px] font-mono opacity-80">Welcome back, Operator.</p>
+            </div>
+
+        </div>
+
+        <!-- Footer Note -->
+        <p class="mt-12 text-[10px] text-slate-400 uppercase tracking-[0.2em] font-bold">
+            System ID: <span class="font-mono">UNSUB_NODE_01</span>
+        </p>
+
+    </main>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Elements
+        const stage1 = document.getElementById('unsubscribe-stage-1');
+        const stage2 = document.getElementById('unsubscribe-stage-2');
+        const stage3 = document.getElementById('unsubscribe-stage-3');
+        const stage4 = document.getElementById('unsubscribe-stage-4');
+        const emailInput = document.getElementById('email-input');
+        const removedEmailSpan = document.getElementById('removed-email');
+
+        // Logic 1: Auto-fill email from URL param ?email=...
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const emailParam = urlParams.get('email');
+            if (emailParam) {
+                emailInput.value = emailParam;
+            }
+        });
+
+        // Helper to get UTM (Added for resubscribe consistency)
+        const getUTM = (param) => {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param) || null;
+        };
+
+        // Logic 2: Trigger The Hook
+        function triggerHook() {
+            if (!emailInput.value || !emailInput.value.includes('@')) {
+                emailInput.classList.add('animate-shake', 'border-red-500', 'border');
+                setTimeout(() => emailInput.classList.remove('animate-shake', 'border-red-500', 'border'), 500);
+                return;
+            }
+            // Swap Stages - Layout Fix
+            stage1.classList.add('hidden');
+            stage2.classList.remove('hidden');
+            stage2.classList.add('flex');
+        }
+
+        // Logic 3: Abort Unsubscribe (Close Modal)
+        function abortUnsubscribe() {
+            stage2.classList.add('hidden');
+            stage2.classList.remove('flex');
+            
+            stage1.classList.remove('hidden');
+        }
+
+        // Logic 4: Confirm Unsubscribe (Sends to Unsubscribe Webhook)
+        async function confirmUnsubscribe() {
+            const email = emailInput.value;
+            
+            // UI Feedback
+            const btn = stage2.querySelector('button:last-child');
+            const originalText = btn.innerHTML;
+            btn.innerText = "DISCONNECTING...";
+            btn.disabled = true;
+            
+            try {
+                // Unsubscribe Webhook URL
+                const webhookUrl = "https://n8n.srv1021168.hstgr.cloud/webhook/c831eab4-77b1-4363-aaee-23c73ccb5355";
+
+                // Send data to n8n
+                await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email: email,
+                        type: 'unsubscribe',
+                        timestamp: new Date().toISOString()
+                    })
+                });
+
+                // Success Transition
+                stage2.classList.add('hidden');
+                
+                removedEmailSpan.innerText = email;
+                stage3.classList.remove('hidden');
+                stage3.classList.add('block', 'animate-fade-in');
+
+            } catch (error) {
+                console.error("Webhook Error:", error);
+                btn.innerText = "CONNECTION ERROR. RETRY.";
+                btn.disabled = false;
+                setTimeout(() => btn.innerHTML = originalText, 3000);
+            }
+        }
+
+        // Logic 5: Resubscribe (Sends to ORIGINAL Landing Page Webhook)
+        async function resubscribe() {
+            const email = emailInput.value;
+            const btn = stage3.querySelector('button');
+            
+            // UI Feedback
+            const originalHtml = btn.innerHTML;
+            btn.innerHTML = '<span class="animate-pulse">RESTORING SYSTEM...</span>';
+            btn.disabled = true;
+            
+            try {
+                // 1. Get IP (Just like the original landing page)
+                const ipResponse = await fetch('https://api64.ipify.org?format=json');
+                const ipData = await ipResponse.json();
+                const userIp = ipData.ip;
+
+                // 2. ORIGINAL Webhook URL (The one for new signups)
+                const webhookUrl = "https://n8n.srv1021168.hstgr.cloud/webhook/d685699f-b890-4f73-91ea-8ba17e63828c";
+                
+                // 3. Construct Payload to match original system
+                const payload = {
+                    email: email,
+                    name: null, // We don't have name here, sending null as per original logic
+                    ip: userIp,
+                    utm_source: getUTM('utm_source'),
+                    utm_medium: getUTM('utm_medium'),
+                    utm_campaign: getUTM('utm_campaign'),
+                    timestamp: new Date().toISOString()
+                };
+
+                await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                // Success UI
+                stage3.classList.add('hidden');
+                stage4.classList.remove('hidden');
+                stage4.classList.add('block', 'animate-fade-in');
+
+            } catch (error) {
+                console.error("Resubscribe Error:", error);
+                btn.innerHTML = "ERROR. TRY AGAIN.";
+                btn.disabled = false;
+                setTimeout(() => btn.innerHTML = originalHtml, 3000);
+            }
+        }
+
+    </script>
+</body>
+</html>
